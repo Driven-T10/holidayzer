@@ -1,3 +1,7 @@
+import express from "express"
+
+const app = express()
+
 const holidays = [
 	{ date: "1/1/2023", name: "Confraternização mundial" },
 	{ date: "2/2/2023", name: "Carnaval" },
@@ -12,3 +16,24 @@ const holidays = [
 	{ date: "11/15/2023", name: "Proclamação da República" },
 	{ date: "12/25/2023", name: "Natal" }
 ]
+
+app.get("/holidays", (req, res) => {
+	res.send(holidays)
+})
+
+app.get("/is-today-holiday", (req, res) => {
+	const today = new Date().toLocaleDateString("en-us")
+
+	const isHoliday = holidays.find((holiday) => holiday.date === today)
+
+	if (isHoliday) {
+		res.send({ message: `Sim, hoje é ${isHoliday.name}` })
+	} else {
+		res.send({ message: "Não, hoje não é feriado" })
+	}
+})
+
+const PORT = 5005
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))
+
+

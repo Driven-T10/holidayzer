@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
-	"type": "module",
+  "type": "module",
   "scripts": {
-		"start": "nodemon src/app.js",
+    "start": "nodemon ./src/app.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest -i --color --passWithNoTests"
   },
   "keywords": [],
